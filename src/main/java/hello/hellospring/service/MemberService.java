@@ -24,9 +24,16 @@ public class MemberService {
      * 회원 가입
      */
     public Long join(Member member){
-        validateDuplicateMember(member); //중복 회원 검증
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+        try {
+            validateDuplicateMember(member); //중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+        } finally { //예외가 터져도 찍어야 하니까
+            long finish = System.currentTimeMillis();
+            System.out.println("join = " + (finish - start) + "ms");
+        }
+
     }
 
     private void validateDuplicateMember(Member member) {
