@@ -13,24 +13,28 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig { // application의 구성정보. 설정정보.
+
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMemberRepository()
     @Bean
     public MemberService memberService() {
-
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(
-                memberRepository(),
-                discountPolicy());
+        System.out.println("AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public DiscountPolicy discountPolicy() {
+        System.out.println("AppConfig.discountPolicy");
         //return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
