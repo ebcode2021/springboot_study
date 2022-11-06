@@ -49,6 +49,7 @@ public class MemberListServlet extends HttpServlet {
             w.write(" <td>" + member.getAge() + "</td>");
             w.write(" </tr>");
         }
+        
         w.write(" </tbody>");
         w.write("</table>");
         w.write("</body>");
