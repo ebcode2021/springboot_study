@@ -20,7 +20,7 @@ public class LogTestController {
         log.debug("debug log = {}", name);
         log.info("info log = {}", name);
         log.warn("warn log = {}", name);
-        log.error("error log = {}, name");
+        log.error("error log = {}", name);
 
         // @RestController 함수에서 문자열을 return하면
         // http message body에 data를 넣어 화면에 바로 보여준다.
